@@ -1,0 +1,12 @@
+{% for quote in page_obj %}
+    <p>{{ quote.text }}</p>
+    <small>— <a href="{% url 'author_detail' quote.author.id %}">{{ quote.author.fullname }}</a></small>
+    <br>
+{% endfor %}
+
+{% if page_obj.has_previous %}
+    <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+{% endif %}
+{% if page_obj.has_next %}
+    <a href="?page={{ page_obj.next_page_number }}">Next</a>
+{% endif %}
